@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DoctorAvailability", "DoctorAvailability", "{7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppointmentBooking", "AppointmentBooking", "{81CF3337-3468-4EE5-A859-27B39B7DC452}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppointmentConfirmation", "AppointmentConfirmation", "{4559B44D-085D-4765-95F2-F4E7FEB280D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DoctorAppointmentManagement", "DoctorAppointmentManagement", "{97A9CA17-1BBB-4DB0-84EE-A5A2D751EC47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3FD64579-534B-4C90-A96F-F3A3B2912A16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9B7C60F9-C270-474F-BDFF-F485A537EDFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.DataAccess", "Doctor.Availability.DataAccess\Doctor.Availability.DataAccess.csproj", "{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.Core", "Doctor.Availability.Core\Doctor.Availability.Core.csproj", "{54C94347-97A9-449F-BEE3-4855CAB2D640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.Integration", "Doctor.Availability.Integration\Doctor.Availability.Integration.csproj", "{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doctor.Appointment.Presentation", "Doctor.Appointment.Presentation", "{F05A9275-946C-441A-BEA3-C54BA5AD51A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54C94347-97A9-449F-BEE3-4855CAB2D640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C94347-97A9-449F-BEE3-4855CAB2D640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C94347-97A9-449F-BEE3-4855CAB2D640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C94347-97A9-449F-BEE3-4855CAB2D640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7C724C7F-CD1A-482D-AF0B-0574AD01EAF6} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+		{81CF3337-3468-4EE5-A859-27B39B7DC452} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+		{4559B44D-085D-4765-95F2-F4E7FEB280D5} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+		{97A9CA17-1BBB-4DB0-84EE-A5A2D751EC47} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
+		{54C94347-97A9-449F-BEE3-4855CAB2D640} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
+		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
+		{F05A9275-946C-441A-BEA3-C54BA5AD51A3} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75D04F69-1312-4D48-8987-BF28F395C788}
+	EndGlobalSection
+EndGlobal

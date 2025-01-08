@@ -1,10 +1,11 @@
 ﻿using Doctor.Availability.Core.Doctor;
+using Doctor.Availability.Core.Doctor.DoctorDtos;
 using Doctor.Availability.Core.Dtos.SlotDtos;
 using Doctor.Availability.Core.Slot;
 
 namespace Doctor.Availability.Core
 {
-    internal class DoctorAvailabilityService
+    public class DoctorAvailabilityService
     {
         private readonly DoctorService _doctorService;
         private readonly SlotService _slotService;
@@ -45,6 +46,13 @@ namespace Doctor.Availability.Core
             var slot = await _slotService.GetIfExists(slotId);
 
             return SlotGetResponse.Of(slot);
+        }
+
+        public async Task<DoctorGetResponse> GetDoctor(Guid doctorId)
+        {
+            var doctor = await _doctorService.GetIfExists(doctorId);
+
+            return DoctorGetResponse.Of(doctor);
         }
     }
 }

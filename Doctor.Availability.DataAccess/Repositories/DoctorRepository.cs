@@ -20,6 +20,11 @@ namespace Doctor.Availability.DataAccess.Repositories
             return await _doctors.AnyAsync(e => e.Id == doctorId);
         }
 
+        public async Task<DoctorEntity?> GetById(Guid doctorId)
+        {
+            return await _doctors.FindAsync(doctorId);
+        }
+
         public int SaveChanges()
         {
             return _applicationDbContext.SaveChanges();

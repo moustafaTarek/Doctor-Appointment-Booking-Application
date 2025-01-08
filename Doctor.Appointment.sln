@@ -15,13 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3FD64579-534
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9B7C60F9-C270-474F-BDFF-F485A537EDFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.DataAccess", "Doctor.Availability.DataAccess\Doctor.Availability.DataAccess.csproj", "{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor.Availability.DataAccess", "Doctor.Availability.DataAccess\Doctor.Availability.DataAccess.csproj", "{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.Core", "Doctor.Availability.Core\Doctor.Availability.Core.csproj", "{54C94347-97A9-449F-BEE3-4855CAB2D640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor.Availability.Core", "Doctor.Availability.Core\Doctor.Availability.Core.csproj", "{54C94347-97A9-449F-BEE3-4855CAB2D640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Availability.Integration", "Doctor.Availability.Integration\Doctor.Availability.Integration.csproj", "{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor.Availability.Integration", "Doctor.Availability.Integration\Doctor.Availability.Integration.csproj", "{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doctor.Appointment.Presentation", "Doctor.Appointment.Presentation", "{F05A9275-946C-441A-BEA3-C54BA5AD51A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appointment.Booking.Domain", "Appointment.Booking.Domain\Appointment.Booking.Domain.csproj", "{A234AE8B-6DD1-4816-B009-58A862CD38A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Booking.Application", "Appointment.Booking.Application\Appointment.Booking.Application.csproj", "{0DE2F901-21BB-4AD3-B145-934C7366CC95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Booking.Infrastructure", "Appointment.Booking.Infrastructure\Appointment.Booking.Infrastructure.csproj", "{E5056443-4C7C-4445-B920-1F71598DDB00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Booking.Api", "Appointment.Booking.Api\Appointment.Booking.Api.csproj", "{9A6A693E-A44B-4B1A-BD80-69600403C01C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,22 @@ Global
 		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A234AE8B-6DD1-4816-B009-58A862CD38A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A234AE8B-6DD1-4816-B009-58A862CD38A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A234AE8B-6DD1-4816-B009-58A862CD38A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A234AE8B-6DD1-4816-B009-58A862CD38A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE2F901-21BB-4AD3-B145-934C7366CC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE2F901-21BB-4AD3-B145-934C7366CC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE2F901-21BB-4AD3-B145-934C7366CC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE2F901-21BB-4AD3-B145-934C7366CC95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5056443-4C7C-4445-B920-1F71598DDB00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5056443-4C7C-4445-B920-1F71598DDB00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5056443-4C7C-4445-B920-1F71598DDB00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5056443-4C7C-4445-B920-1F71598DDB00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A6A693E-A44B-4B1A-BD80-69600403C01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6A693E-A44B-4B1A-BD80-69600403C01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A6A693E-A44B-4B1A-BD80-69600403C01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A6A693E-A44B-4B1A-BD80-69600403C01C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,7 +75,10 @@ Global
 		{1D2AFDE3-0C7B-40E0-99AF-1469AFEB4288} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
 		{54C94347-97A9-449F-BEE3-4855CAB2D640} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
 		{71528336-9EE4-4B3D-8DAA-9CF42E99DCE9} = {7C724C7F-CD1A-482D-AF0B-0574AD01EAF6}
-		{F05A9275-946C-441A-BEA3-C54BA5AD51A3} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
+		{A234AE8B-6DD1-4816-B009-58A862CD38A4} = {81CF3337-3468-4EE5-A859-27B39B7DC452}
+		{0DE2F901-21BB-4AD3-B145-934C7366CC95} = {81CF3337-3468-4EE5-A859-27B39B7DC452}
+		{E5056443-4C7C-4445-B920-1F71598DDB00} = {81CF3337-3468-4EE5-A859-27B39B7DC452}
+		{9A6A693E-A44B-4B1A-BD80-69600403C01C} = {81CF3337-3468-4EE5-A859-27B39B7DC452}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75D04F69-1312-4D48-8987-BF28F395C788}

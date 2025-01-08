@@ -18,5 +18,10 @@ namespace Doctor.Availability.Core.Doctor
             if (!isExists)
                 throw new ArgumentNullException($"Doctor with Id: {doctorId} not exists");
         }
+
+        public async Task<DataAccess.Entities.Doctor> GetIfExists(Guid doctorId)
+        {
+            return await _doctorRepository.GetById(doctorId) ?? throw new ArgumentNullException($"No doctors have been found with Id: {doctorId}");
+        }
     }
 }

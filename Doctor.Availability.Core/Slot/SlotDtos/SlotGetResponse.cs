@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SlotEntity = Doctor.Availability.DataAccess.Entities.Slot;
+﻿using SlotEntity = Doctor.Availability.DataAccess.Entities.Slot;
 
 namespace Doctor.Availability.Core.Dtos.SlotDtos
 {

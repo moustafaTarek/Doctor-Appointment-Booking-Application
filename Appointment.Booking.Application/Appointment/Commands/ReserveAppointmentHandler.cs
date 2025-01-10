@@ -7,7 +7,7 @@ using AppointmentModel = Appointment.Booking.Domain.Models.Appointment;
 
 namespace Appointment.Booking.Application.Appointment.Commands
 {
-    internal class ReserveAppointmentHandler
+    public class ReserveAppointmentHandler
     {
         private readonly DoctorAvailabilityService _doctorAvailabilityService;
         private readonly IAppointmentRepo _appointmentRepo;
@@ -36,6 +36,8 @@ namespace Appointment.Booking.Application.Appointment.Commands
                     throw new InvalidReservationException($"Slot does not belong to the doctor with Id: {slot.DoctorId}");
 
                 var appointment = AppointmentModel.Create(command.DoctorId, command.PatientId, command.SlotId);
+
+                //Update slot status to be reserved
 
                 await _appointmentRepo.AddAppointment(appointment);
 

@@ -3,7 +3,7 @@ using Doctor.Availability.Core;
 
 namespace Appointment.Booking.Application.Appointment.Queries
 {
-    internal class GetDoctorAvailableSlotsHandler
+    public class GetDoctorAvailableSlotsHandler
     {
         private readonly DoctorAvailabilityService _doctorAvailabilityService;
         

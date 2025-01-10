@@ -8,5 +8,9 @@ namespace Doctor.Availability.DataAccess.Db
     {
         public DbSet<DoctorEntity> Doctors { get; set; }
         public DbSet<Slot> Slots { get; set; }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
     }
 }

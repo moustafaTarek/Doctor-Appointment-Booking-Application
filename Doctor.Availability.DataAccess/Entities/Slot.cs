@@ -12,6 +12,6 @@ namespace Doctor.Availability.DataAccess.Entities
         public double Cost { get; set; }
         public DateTimeOffset Time { get; set; }
         public DateTimeOffset CreationDate { get; set; }
-        public DateTimeOffset ReservedAt { get; set; }
+        public DateTimeOffset? ReservedAt { get; set; }
     }
 }

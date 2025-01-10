@@ -16,11 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Db\Configs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Doctor.Availability.Integration\Doctor.Availability.Integration.csproj" />
+    <ProjectReference Include="..\Doctor.Appointment.Management.Core\Doctor.Appointment.Management.Core.csproj" />
   </ItemGroup>
 
 </Project>

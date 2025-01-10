@@ -1,3 +1,6 @@
+using Appointment.Booking.Application;
+using Appointment.Booking.Infrastructure;
+using Doctor.Availability.Core;
 
 namespace Appointment.Booking.Api
 {
@@ -13,6 +16,10 @@ namespace Appointment.Booking.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddApplicationServices();
+            builder.Services.AddInfrastructureServices();
+            builder.Services.AddDoctorAvailabilityService();
 
             var app = builder.Build();
 

@@ -19,8 +19,4 @@
     <Folder Include="Db\Configs\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Doctor.Availability.Integration\Doctor.Availability.Integration.csproj" />
-  </ItemGroup>
-
 </Project>

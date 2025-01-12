@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Appointment.Booking.Infrastructure.Entities
 {
-    internal class AppointmentEntity : BaseEntity<Guid>
+    public class AppointmentEntity : BaseEntity<Guid>
     {
         public Guid DoctorId { get; set; }
         public Guid SlotId { get; set; }

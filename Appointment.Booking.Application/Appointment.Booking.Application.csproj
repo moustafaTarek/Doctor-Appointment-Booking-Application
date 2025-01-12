@@ -18,7 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Appointment.Booking.Domain\Appointment.Booking.Domain.csproj" />
     <ProjectReference Include="..\Doctor.Availability.Core\Doctor.Availability.Core.csproj" />
-    <ProjectReference Include="..\Doctor.Availability.Integration\Doctor.Availability.Integration.csproj" />
   </ItemGroup>
 
 </Project>

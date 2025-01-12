@@ -21,9 +21,24 @@ namespace Appointment.Booking.Domain.Models
             Status = AppointmentStatus.Pending;
         }
 
+        private Appointment(Guid id, Guid doctorId, Guid patientId, Guid slotId, DateTimeOffset reservedAt, AppointmentStatus status)
+        {
+            Id = id;
+            DoctorId = doctorId;
+            PatientId = patientId;
+            SlotId = slotId;
+            ReservedAt = reservedAt;
+            Status = status;
+        }
+
         public static Appointment Create(Guid doctorId, Guid patientId, Guid slotId)
         {
             return new Appointment(doctorId, patientId, slotId);
+        }
+
+        public static Appointment Create(Guid id, Guid doctorId, Guid patientId, Guid slotId, DateTimeOffset reservedAt, AppointmentStatus status)
+        {
+            return new Appointment(id, doctorId, patientId, slotId, reservedAt, status);
         }
 
         public void UpdateStatus(AppointmentStatus appointmentStatus)

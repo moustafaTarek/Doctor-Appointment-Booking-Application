@@ -1,17 +1,25 @@
 ﻿
+using Doctor.Appointment.Management.Core.Models;
+using Doctor.Appointment.Management.Core.OutputPorts.IRepositories;
+
 namespace Doctor.Appointment.Management.Core.Services
 {
-    internal class AppointmentManagmentService
+    public class AppointmentManagmentService
     {
-        public async Task<string> GetUpcomingAppointments(Guid doctorId)
+        private readonly IAppointmentStatusRepository _appointmentStatusRepository;
+
+        public AppointmentManagmentService(IAppointmentStatusRepository appointmentStatusRepository)
         {
-            // Get all upcoming appointments for a doctor
-            return default;
+            _appointmentStatusRepository = appointmentStatusRepository;
         }
 
         public async Task<string> MarkAppointment(Guid appoitmentId, short appointmentStatusId)
         {
-            return default;
+            AppointmentStatus appointmentStatus = AppointmentStatus.Create(appoitmentId, appointmentStatusId);
+            
+            var appontmentStatusRecordId = await _appointmentStatusRepository.Add(appointmentStatus);
+            
+            return $"A new appointment status has been added with Id: {appontmentStatusRecordId}";
         }
     }
 }

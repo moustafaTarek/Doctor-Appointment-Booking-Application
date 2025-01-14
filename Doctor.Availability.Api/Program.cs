@@ -1,4 +1,11 @@
 
+using Doctor.Availability.Core;
+using Doctor.Availability.Core.Doctor;
+using Doctor.Availability.Core.Slot;
+using Doctor.Availability.DataAccess.Db;
+using Doctor.Availability.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace Doctor.Availability.Api
 {
     public class Program
@@ -11,8 +18,19 @@ namespace Doctor.Availability.Api
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            
+            builder.Services.AddScoped<DoctorAvailabilityService>()
+                            .AddScoped<DoctorService>()
+                            .AddScoped<DoctorRepository>()
+                            .AddScoped<SlotService>()
+                            .AddScoped<SlotRepository>()
+                            .AddDbContextPool<ApplicationDbContext>(options =>
+                            {
+                                options.UseNpgsql("host=localhost;port=5432;database=modular-monolith;user Id=postgres;password=postgres;");
+                            });
 
             var app = builder.Build();
 

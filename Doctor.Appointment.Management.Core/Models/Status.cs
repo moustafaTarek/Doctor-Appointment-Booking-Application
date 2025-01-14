@@ -1,4 +1,4 @@
-﻿using Doctor.Appointment.Management.Core.Enums;
+﻿using Enums;
 
 namespace Doctor.Appointment.Management.Core.Models
 {
@@ -11,9 +11,9 @@ namespace Doctor.Appointment.Management.Core.Models
         {
             Id = value switch
             {
-                (short)StatusEnum.Completed => 0,
-                (short)StatusEnum.Cancel => 1,
-                (short)StatusEnum.Pending => 2,
+                (short)StatusEnum.Completed => (short)StatusEnum.Completed,
+                (short)StatusEnum.Cancel => (short)StatusEnum.Cancel,
+                (short)StatusEnum.Pending => (short)StatusEnum.Pending,
                 _ => throw new ArgumentException("Invalid status value")
             };
 

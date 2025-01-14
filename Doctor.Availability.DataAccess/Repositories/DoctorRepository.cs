@@ -25,6 +25,11 @@ namespace Doctor.Availability.DataAccess.Repositories
             return await _doctors.FindAsync(doctorId);
         }
 
+        public async Task AddAsync(DoctorEntity doctor)
+        {
+            await _doctors.AddAsync(doctor);
+        }
+
         public int SaveChanges()
         {
             return _applicationDbContext.SaveChanges();

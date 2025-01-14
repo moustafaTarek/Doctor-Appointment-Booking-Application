@@ -18,13 +18,16 @@ namespace Doctor.Availability.DataAccess.Repositories
 
         public async Task<Slot?> GetById(Guid slotId)
         {
-            return await _slots.FindAsync(slotId);
+            return await _slots
+                        .Include(e => e.Doctor)
+                        .SingleOrDefaultAsync(s=>s.Id == slotId);
         }
 
         public async Task<IList<Slot>> GetAll(Expression<Func<Slot,bool>> expression)
         {
             return await _slots
                          .Where(expression)
+                         .Include(e => e.Doctor)
                          .ToListAsync();
         }
 

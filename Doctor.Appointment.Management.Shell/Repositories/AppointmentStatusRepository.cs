@@ -31,7 +31,7 @@ namespace Doctor.Appointment.Management.Shell.Repositories
             {
                 AppontmentId = appointmentStatus.AppointmentId.Id,
                 StatusId = appointmentStatus.Status.Id,
-                CreatedAt = DateTimeOffset.Now
+                CreatedAt = DateTimeOffset.UtcNow
             };
 
             await _appointmentStatuses.AddAsync(appointmentStatusEntity);

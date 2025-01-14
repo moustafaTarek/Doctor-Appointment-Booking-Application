@@ -2,6 +2,7 @@
 using Doctor.Availability.Core.Doctor.DoctorDtos;
 using Doctor.Availability.Core.Dtos.SlotDtos;
 using Doctor.Availability.Core.Slot;
+using Enums;
 
 namespace Doctor.Availability.Core
 {
@@ -34,6 +35,15 @@ namespace Doctor.Availability.Core
             return SlotGetResponse.Of(slots);
         }
 
+        public async Task<IList<SlotGetResponse>> GetAllUnreservedSlotsForDoctor(Guid doctorId)
+        {
+            await _doctorService.CheckIfNotExists(doctorId);
+
+            var slots = await _slotService.GetAllUnReservedSlotsForDoctorId(doctorId);
+
+            return SlotGetResponse.Of(slots);
+        }
+
         public async Task AddSlotForDoctor(Guid doctorId, SlotAddRequest slotAddRequest)
         {
             await _doctorService.CheckIfNotExists(doctorId);
@@ -53,6 +63,20 @@ namespace Doctor.Availability.Core
             var doctor = await _doctorService.GetIfExists(doctorId);
 
             return DoctorGetResponse.Of(doctor);
+        }
+
+        public async Task<Guid> AddDoctor(DoctorAddRequest doctorAddRequest)
+        {
+            var doctorId = await _doctorService.AddDoctor(doctorAddRequest.Name);
+
+            return doctorId;
+        }
+
+        public async Task UpdateSlotAsReserved(Guid slotId)
+        {
+            var slot = await _slotService.GetIfExists(slotId);
+
+            await _slotService.UpdateSlot(slot);
         }
     }
 }

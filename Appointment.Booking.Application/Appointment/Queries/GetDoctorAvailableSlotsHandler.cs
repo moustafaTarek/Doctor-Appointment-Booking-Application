@@ -1,5 +1,6 @@
 ﻿
 using Doctor.Availability.Core;
+using Enums;
 
 namespace Appointment.Booking.Application.Appointment.Queries
 {
@@ -8,7 +9,6 @@ namespace Appointment.Booking.Application.Appointment.Queries
         private readonly DoctorAvailabilityService _doctorAvailabilityService;
         
         private const int ZERO_AVAILABLE_SLOTS = 0;
-        private const short NOT_RESERVED = 0;
 
         public GetDoctorAvailableSlotsHandler(DoctorAvailabilityService doctorAvailabilityService)
         {
@@ -17,7 +17,7 @@ namespace Appointment.Booking.Application.Appointment.Queries
         
         public async Task<DoctorAvailableSlotsResponse> Handle(DoctorAvailableSlotsRequest request)
         {
-            var slots =  await _doctorAvailabilityService.GetAllSlotsForDoctor(request.DoctorId, NOT_RESERVED);
+            var slots =  await _doctorAvailabilityService.GetAllUnreservedSlotsForDoctor(request.DoctorId);
 
             if (slots is null || slots.Count() == ZERO_AVAILABLE_SLOTS )
                 throw new ArgumentNullException($"No available slots for doctor with Id: {request.DoctorId}", "Slots");

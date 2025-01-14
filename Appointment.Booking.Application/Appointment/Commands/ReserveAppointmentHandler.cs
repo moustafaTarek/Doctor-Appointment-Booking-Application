@@ -2,6 +2,7 @@
 using Appointment.Booking.Domain.Exceptions;
 using Appointment.Booking.Domain.IRepositories;
 using Doctor.Availability.Core;
+using Enums;
 using System.Collections.Concurrent;
 using AppointmentModel = Appointment.Booking.Domain.Models.Appointment;
 
@@ -37,7 +38,7 @@ namespace Appointment.Booking.Application.Appointment.Commands
 
                 var appointment = AppointmentModel.Create(command.DoctorId, command.PatientId, command.SlotId);
 
-                //Update slot status to be reserved
+                await _doctorAvailabilityService.UpdateSlotAsReserved(slot.SlotId);
 
                 await _appointmentRepo.AddAppointment(appointment);
 

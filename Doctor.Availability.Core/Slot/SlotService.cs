@@ -1,5 +1,7 @@
 ﻿using Doctor.Availability.Core.Dtos.SlotDtos;
 using Doctor.Availability.DataAccess.Repositories;
+using Enums;
+using System.Globalization;
 using SlotEntity = Doctor.Availability.DataAccess.Entities.Slot;
 
 namespace Doctor.Availability.Core.Slot
@@ -7,6 +9,7 @@ namespace Doctor.Availability.Core.Slot
     public class SlotService
     {
         private readonly SlotRepository _slotRepository;
+        private const string DATE_FORMAT = "dd/MM/yyyy hh:mm tt";
 
         public SlotService(SlotRepository slotRepository)
         {
@@ -21,6 +24,11 @@ namespace Doctor.Availability.Core.Slot
         public async Task<IList<SlotEntity>> GetAllSlotsForDoctorId(Guid doctorId, short slotStatusId)
         {
             return await _slotRepository.GetAll(f => f.DoctorId == doctorId && f.StatusId == slotStatusId);
+        }
+
+        public async Task<IList<SlotEntity>> GetAllUnReservedSlotsForDoctorId(Guid doctorId)
+        {
+            return await _slotRepository.GetAll(f => f.DoctorId == doctorId && f.IsReserved == false);
         }
 
         public async Task<SlotEntity> GetIfExists(Guid slotId)
@@ -38,17 +46,37 @@ namespace Doctor.Availability.Core.Slot
 
         public async Task AddNewSlotForDoctor(Guid doctorId, SlotAddRequest slotAddRequest)
         {
-            SlotEntity newSlot = new SlotEntity
+            try
             {
-                DoctorId = doctorId,
-                CreationDate = DateTimeOffset.UtcNow,
-                StatusId = 1,
-                Cost = slotAddRequest.Cost,
-                IsReserved = false,
-                Time = slotAddRequest.Time
-            };
+                if (DateTimeOffset.TryParseExact(slotAddRequest.Time, DATE_FORMAT, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTimeOffset))
+                {
 
-            await _slotRepository.Add(newSlot);
+                    SlotEntity newSlot = new SlotEntity
+                    {
+                        DoctorId = doctorId,
+                        CreationDate = DateTimeOffset.UtcNow,
+                        StatusId = (short)StatusEnum.Pending,
+                        Cost = slotAddRequest.Cost,
+                        IsReserved = false,
+                        Time = dateTimeOffset.UtcDateTime
+                    };
+
+                    await _slotRepository.Add(newSlot);
+                    await _slotRepository.SaveChangesAsync();
+                }
+            }
+
+            catch (Exception e)
+            {
+                throw new ArgumentNullException($"Error while adding slot for doctor: {e.Message}");
+            }
+
+        }
+
+        public async Task UpdateSlot(SlotEntity slot)
+        {
+            slot.IsReserved = true;
+
             await _slotRepository.SaveChangesAsync();
         }
     }

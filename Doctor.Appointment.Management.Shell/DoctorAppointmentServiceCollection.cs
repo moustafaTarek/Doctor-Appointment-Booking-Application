@@ -1,4 +1,5 @@
 ﻿using Appointment.Booking.Application.Appointment.Queries.CheckIfAppointmentExistsUseCase;
+using Appointment.Booking.Application.Appointment.Queries.GetNextAppointmentsForDoctorUseCase;
 using Appointment.Booking.Domain.IRepositories;
 using Appointment.Booking.Infrastructure.Db;
 using Appointment.Booking.Infrastructure.Repositories;
@@ -15,9 +16,10 @@ namespace Doctor.Appointment.Management.Shell
     {
         public static IServiceCollection AddDependencies(this IServiceCollection services)
         {
-            return 
+            return
                 services.AddScoped<IAppointmentStatusRepository, AppointmentStatusRepository>()
-                        .AddScoped<IStatusRepository,StatusRepository>()
+                        .AddScoped<IStatusRepository, StatusRepository>()
+                        .AddScoped<GetNextAppointmentsHandler>()
                         .AddScoped<AppointmentManagmentService>()
                         .AddScoped<AppointmentExitsHandler>()
                         .AddScoped<IAppointmentRepo, AppointmentRepo>()

@@ -23,5 +23,18 @@ namespace Doctor.Availability.Core.Doctor
         {
             return await _doctorRepository.GetById(doctorId) ?? throw new ArgumentNullException($"No doctors have been found with Id: {doctorId}");
         }
+
+        public async Task<Guid> AddDoctor(string doctorName)
+        {
+            var doctor = new DataAccess.Entities.Doctor
+            {
+                Name = doctorName
+            };
+            
+            await _doctorRepository.AddAsync(doctor);
+            await _doctorRepository.SaveChangesAsync();
+
+            return doctor.Id;
+        }
     }
 }

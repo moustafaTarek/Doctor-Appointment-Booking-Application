@@ -3,6 +3,6 @@
     public class SlotAddRequest
     {
         public double Cost { get; set; }
-        public DateTimeOffset Time { get; set; }
+        public string Time { get; set; }
     }
 }

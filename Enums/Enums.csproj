@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Doctor.Availability.DataAccess\Doctor.Availability.DataAccess.csproj" />
-    <ProjectReference Include="..\Enums\Enums.csproj" />
-  </ItemGroup>
-
 </Project>

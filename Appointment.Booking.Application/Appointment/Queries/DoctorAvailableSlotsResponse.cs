@@ -1,4 +1,4 @@
-﻿using Doctor.Availability.Core.Dtos.SlotDtos;
+﻿using Integration.DTOs;
 
 namespace Appointment.Booking.Application.Appointment.Queries
 {
@@ -10,7 +10,7 @@ namespace Appointment.Booking.Application.Appointment.Queries
 
         public DoctorAvailableSlotsResponse(IList<SlotGetResponse> slots)
         {
-            DoctorName = slots.FirstOrDefault()?.DoctorName;
+            DoctorName = slots?.FirstOrDefault()?.DoctorName;
             DoctorId = slots.FirstOrDefault()?.DoctorId == null ? Guid.Empty : slots.FirstOrDefault()?.DoctorId;
 
             AvailableSlots = slots.Select(e => new AvailableSlots

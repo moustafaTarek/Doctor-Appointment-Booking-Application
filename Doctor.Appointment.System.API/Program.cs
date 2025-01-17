@@ -1,8 +1,9 @@
+using Doctor.Availability.Core;
+using Doctor.Appointment.Management.Shell;
 using Appointment.Booking.Application;
 using Appointment.Booking.Infrastructure;
-using Doctor.Availability.Core;
 
-namespace Appointment.Booking.Api
+namespace Doctor.Appointment.System.API
 {
     public class Program
     {
@@ -17,9 +18,9 @@ namespace Appointment.Booking.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddApplicationServices();
-            builder.Services.AddInfrastructureServices();
-            builder.Services.AddDoctorAvailabilityServiceCollection();
+            builder.Services.AddDoctorAvailabilityServiceCollection()
+                            .AddDoctorAppointmentServiceCollection()
+                            .AddInfrastructureServices();
 
             var app = builder.Build();
 
@@ -33,7 +34,6 @@ namespace Appointment.Booking.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

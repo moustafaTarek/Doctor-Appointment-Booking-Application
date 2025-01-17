@@ -1,16 +1,14 @@
-﻿
-using Doctor.Availability.Core;
-using Enums;
+﻿using Integration.Interfaces;
 
 namespace Appointment.Booking.Application.Appointment.Queries
 {
     public class GetDoctorAvailableSlotsHandler
     {
-        private readonly DoctorAvailabilityService _doctorAvailabilityService;
+        private readonly IDoctorAvailabilityAPI _doctorAvailabilityService;
         
         private const int ZERO_AVAILABLE_SLOTS = 0;
 
-        public GetDoctorAvailableSlotsHandler(DoctorAvailabilityService doctorAvailabilityService)
+        public GetDoctorAvailableSlotsHandler(IDoctorAvailabilityAPI doctorAvailabilityService)
         {
             _doctorAvailabilityService = doctorAvailabilityService;
         }

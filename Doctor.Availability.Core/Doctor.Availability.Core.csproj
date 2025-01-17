@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Doctor.Availability.DataAccess\Doctor.Availability.DataAccess.csproj" />
     <ProjectReference Include="..\Enums\Enums.csproj" />
+    <ProjectReference Include="..\IntegrationInterfaces\Integration.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

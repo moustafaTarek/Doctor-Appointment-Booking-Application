@@ -1,12 +1,12 @@
-﻿using Doctor.Availability.Core.Dtos.SlotDtos;
-using Doctor.Availability.DataAccess.Repositories;
+﻿using Doctor.Availability.DataAccess.Repositories;
 using Enums;
+using Integration.DTOs;
 using System.Globalization;
 using SlotEntity = Doctor.Availability.DataAccess.Entities.Slot;
 
 namespace Doctor.Availability.Core.Slot
 {
-    public class SlotService
+    internal class SlotService
     {
         private readonly SlotRepository _slotRepository;
         private const string DATE_FORMAT = "dd/MM/yyyy hh:mm tt";

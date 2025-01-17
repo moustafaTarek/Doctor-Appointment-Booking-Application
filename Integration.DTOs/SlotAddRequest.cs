@@ -1,4 +1,4 @@
-﻿namespace Doctor.Availability.Core.Dtos.SlotDtos
+﻿namespace Integration.DTOs
 {
     public class SlotAddRequest
     {

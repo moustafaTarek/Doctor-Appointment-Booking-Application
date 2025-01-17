@@ -1,4 +1,5 @@
-﻿using Appointment.Booking.Domain.IRepositories;
+﻿using Appointment.Booking.Application;
+using Appointment.Booking.Domain.IRepositories;
 using Appointment.Booking.Infrastructure.Db;
 using Appointment.Booking.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,8 @@ namespace Appointment.Booking.Infrastructure
             services.AddDbContext<AppointmentBookingDbContext>(options =>
             {
                 options.UseNpgsql("host=localhost;port=5432;database=modular-monolith-AppBooking;user Id=postgres;password=postgres;");
-            });
+            })
+            .AddApplicationServices();
             return services;
         }
     }

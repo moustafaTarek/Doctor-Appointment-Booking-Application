@@ -1,43 +1,41 @@
 ﻿
 using Appointment.Booking.Domain.Exceptions;
 using Appointment.Booking.Domain.IRepositories;
-using Doctor.Availability.Core;
-using Enums;
+using Integration.Events;
+using Integration.Interfaces;
+using MediatR;
 using System.Collections.Concurrent;
 using AppointmentModel = Appointment.Booking.Domain.Models.Appointment;
 
 namespace Appointment.Booking.Application.Appointment.Commands
 {
-    public class ReserveAppointmentHandler
+    internal class ReserveAppointmentHandler : IRequestHandler<AppointmentReservationCommandEvent, string>
     {
-        private readonly DoctorAvailabilityService _doctorAvailabilityService;
+        private readonly IDoctorAvailabilityAPI _doctorAvailabilityService;
         private readonly IAppointmentRepo _appointmentRepo;
 
         private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> _slotLocks = new ConcurrentDictionary<Guid, SemaphoreSlim>();
 
-        public ReserveAppointmentHandler(DoctorAvailabilityService doctorAvailabilityService, IAppointmentRepo appointmentRepo)
+        public ReserveAppointmentHandler(IDoctorAvailabilityAPI doctorAvailabilityService, IAppointmentRepo appointmentRepo)
         {
             _doctorAvailabilityService = doctorAvailabilityService;
             _appointmentRepo = appointmentRepo;
         }
 
-        public async Task<string> Handle(AppointmentReservationRequest command) 
+        public async Task<string> Handle(AppointmentReservationCommandEvent request, CancellationToken cancellationToken)
         {
-            var slotLock = _slotLocks.GetOrAdd(command.SlotId, _ => new SemaphoreSlim(1, 1));
+            var slotLock = _slotLocks.GetOrAdd(request.SlotId, _ => new SemaphoreSlim(1, 1));
             await slotLock.WaitAsync();
-
             try
             {
-                var slot = await _doctorAvailabilityService.GetSlot(command.SlotId) ?? throw new ArgumentNullException($"No slots has been found for Id: {command.SlotId}", "Slot");
+                var slot = await _doctorAvailabilityService.GetSlot(request.SlotId) ?? throw new ArgumentNullException($"No slots has been found for Id: {request.SlotId}", "Slot");
 
                 if (slot.IsReserved)
                     throw new InvalidReservationException($"Slot has been reserved already");
 
-                if(!slot.DoctorId.Equals(command.DoctorId))
+                if (!slot.DoctorId.Equals(request.DoctorId))
                     throw new InvalidReservationException($"Slot does not belong to the doctor with Id: {slot.DoctorId}");
-
-                var appointment = AppointmentModel.Create(command.DoctorId, command.PatientId, command.SlotId);
-
+                var appointment = AppointmentModel.Create(request.DoctorId, request.PatientId, request.SlotId);
                 await _doctorAvailabilityService.UpdateSlotAsReserved(slot.SlotId);
 
                 await _appointmentRepo.AddAppointment(appointment);
@@ -49,7 +47,7 @@ namespace Appointment.Booking.Application.Appointment.Commands
                 slotLock.Release();
                 if (slotLock.CurrentCount == 1)
                 {
-                    _slotLocks.TryRemove(command.SlotId, out _);
+                    _slotLocks.TryRemove(request.SlotId, out _);
                 }
             }
         }

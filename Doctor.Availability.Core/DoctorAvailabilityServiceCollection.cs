@@ -2,6 +2,7 @@
 using Doctor.Availability.Core.Slot;
 using Doctor.Availability.DataAccess.Db;
 using Doctor.Availability.DataAccess.Repositories;
+using Integration.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,9 +10,9 @@ namespace Doctor.Availability.Core
 {
     public static class DoctorAvailabilityServiceCollection
     {
-        public static IServiceCollection AddDoctorAvailabilityService(this IServiceCollection services)
+        public static IServiceCollection AddDoctorAvailabilityServiceCollection(this IServiceCollection services)
         {
-            services.AddScoped<DoctorAvailabilityService>();
+            services.AddScoped<IDoctorAvailabilityAPI, DoctorAvailabilityService>();
             services.AddScoped<DoctorService>();
             services.AddScoped<SlotService>();
             services.AddScoped<DoctorRepository>();

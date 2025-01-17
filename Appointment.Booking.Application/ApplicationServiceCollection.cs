@@ -11,10 +11,13 @@ namespace Appointment.Booking.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<ReserveAppointmentHandler>();
             services.AddScoped<GetDoctorAvailableSlotsHandler>();
-            services.AddScoped<GetNextAppointmentsHandler>();
-            services.AddScoped<AppointmentExitsHandler>();
+            services.AddMediatR(config =>
+            {
+                config.RegisterServicesFromAssembly(typeof(AppointmentExitsHandler).Assembly);
+                config.RegisterServicesFromAssembly(typeof(GetNextAppointmentsHandler).Assembly);
+                config.RegisterServicesFromAssembly(typeof(ReserveAppointmentHandler).Assembly);
+            });
 
             return services;
         }

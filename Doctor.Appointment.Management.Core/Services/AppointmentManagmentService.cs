@@ -1,10 +1,11 @@
 ﻿
 using Doctor.Appointment.Management.Core.Models;
 using Doctor.Appointment.Management.Core.OutputPorts.IRepositories;
+using Integration.Interfaces;
 
 namespace Doctor.Appointment.Management.Core.Services
 {
-    public class AppointmentManagmentService
+    internal class AppointmentManagmentService : IAppointmentManagmentAPI
     {
         private readonly IAppointmentStatusRepository _appointmentStatusRepository;
 

@@ -7,11 +7,11 @@ namespace Doctor.Appointment.Managment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DoctorManagmentsController : ControllerBase
+    public class DoctorManagementsController : ControllerBase
     {
         private readonly AppointmentManagmentService _appointmentManagmentService;
         private readonly GetNextAppointmentsHandler _getNextAppointmentsHandler;
-        public DoctorManagmentsController(AppointmentManagmentService appointmentManagmentService, GetNextAppointmentsHandler getNextAppointmentsHandler)
+        public DoctorManagementsController(AppointmentManagmentService appointmentManagmentService, GetNextAppointmentsHandler getNextAppointmentsHandler)
         {
             _appointmentManagmentService = appointmentManagmentService;
             _getNextAppointmentsHandler = getNextAppointmentsHandler;

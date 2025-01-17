@@ -1,8 +1,10 @@
 ﻿using Appointment.Booking.Domain.IRepositories;
+using Integration.Events;
+using MediatR;
 
 namespace Appointment.Booking.Application.Appointment.Queries.CheckIfAppointmentExistsUseCase
 {
-    public class AppointmentExitsHandler
+    internal class AppointmentExitsHandler : IRequestHandler<AppointmentExistsQueryEvent, bool>
     {
         private readonly IAppointmentRepo _appointmentRepo;
 
@@ -11,9 +13,9 @@ namespace Appointment.Booking.Application.Appointment.Queries.CheckIfAppointment
             _appointmentRepo = appointmentRepo;
         }
 
-        public async Task<bool> Handle(Guid AppointmentId)
+        public async Task<bool> Handle(AppointmentExistsQueryEvent request, CancellationToken cancellationToken)
         {
-            return await _appointmentRepo.AppointmentExists(AppointmentId);
+            return await _appointmentRepo.AppointmentExists(request.Id);
         }
     }
 }

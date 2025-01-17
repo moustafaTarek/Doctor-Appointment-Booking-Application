@@ -2,7 +2,7 @@
 
 namespace Doctor.Availability.Core.Doctor
 {
-    public class DoctorService
+    internal class DoctorService
     {
         private readonly DoctorRepository _doctorRepository;
 

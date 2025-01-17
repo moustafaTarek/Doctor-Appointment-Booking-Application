@@ -3,7 +3,8 @@ using Doctor.Appointment.Management.Core.OutputPorts.IRepositories;
 using Doctor.Appointment.Management.Shell.Db;
 using AppointmentStatusEntity = Doctor.Appointment.Management.Shell.Entities.AppointmentStatus;
 using Microsoft.EntityFrameworkCore;
-using Appointment.Booking.Application.Appointment.Queries.CheckIfAppointmentExistsUseCase;
+using MediatR;
+using Integration.Events;
 
 namespace Doctor.Appointment.Management.Shell.Repositories
 {
@@ -11,18 +12,18 @@ namespace Doctor.Appointment.Management.Shell.Repositories
     {
         private readonly AppointmentManagemnetDbContext _context;
         private readonly DbSet<AppointmentStatusEntity> _appointmentStatuses;
-        private readonly AppointmentExitsHandler _appointmentExitsHandler;
+        private readonly IMediator _mediator;
 
-        public AppointmentStatusRepository(AppointmentManagemnetDbContext context, AppointmentExitsHandler appointmentExitsHandler)
+        public AppointmentStatusRepository(AppointmentManagemnetDbContext context, IMediator appointmentExitsHandler, IMediator mediator)
         {
             _context = context;
             _appointmentStatuses = context.AppointmentStatuses;
-            _appointmentExitsHandler = appointmentExitsHandler;
+            _mediator = mediator;
         }
 
         public async Task<Guid> Add(AppointmentStatus appointmentStatus)
         {
-            if (!await _appointmentExitsHandler.Handle(appointmentStatus.AppointmentId.Id))
+            if (!await _mediator.Send(new AppointmentExistsQueryEvent { Id = appointmentStatus.AppointmentId.Id }))
             {
                 throw new Exception("Appointment does not exist");
             }

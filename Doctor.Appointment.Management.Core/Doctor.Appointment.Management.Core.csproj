@@ -12,7 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Enums\Enums.csproj" />
+    <ProjectReference Include="..\IntegrationInterfaces\Integration.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿namespace Doctor.Availability.Core.Doctor.DoctorDtos
+﻿
+namespace Integration.DTOs
 {
     public class DoctorAddRequest
     {

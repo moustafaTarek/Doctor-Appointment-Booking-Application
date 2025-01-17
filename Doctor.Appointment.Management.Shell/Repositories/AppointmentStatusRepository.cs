@@ -10,11 +10,11 @@ namespace Doctor.Appointment.Management.Shell.Repositories
 {
     internal class AppointmentStatusRepository : IAppointmentStatusRepository
     {
-        private readonly AppointmentManagemnetDbContext _context;
+        private readonly AppointmentManagementDbContext _context;
         private readonly DbSet<AppointmentStatusEntity> _appointmentStatuses;
         private readonly IMediator _mediator;
 
-        public AppointmentStatusRepository(AppointmentManagemnetDbContext context, IMediator appointmentExitsHandler, IMediator mediator)
+        public AppointmentStatusRepository(AppointmentManagementDbContext context, IMediator appointmentExitsHandler, IMediator mediator)
         {
             _context = context;
             _appointmentStatuses = context.AppointmentStatuses;
@@ -30,7 +30,7 @@ namespace Doctor.Appointment.Management.Shell.Repositories
 
             AppointmentStatusEntity appointmentStatusEntity = new AppointmentStatusEntity
             {
-                AppontmentId = appointmentStatus.AppointmentId.Id,
+                AppointmentId = appointmentStatus.AppointmentId.Id,
                 StatusId = appointmentStatus.Status.Id,
                 CreatedAt = DateTimeOffset.UtcNow
             };

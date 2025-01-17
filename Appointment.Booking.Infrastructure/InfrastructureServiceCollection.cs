@@ -9,7 +9,7 @@ namespace Appointment.Booking.Infrastructure
 {
     public static class InfrastructureServiceCollection
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+        public static IServiceCollection AddAppointmentBookingInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IAppointmentRepo, AppointmentRepo>();
             services.AddScoped<IPatientRepo, PatientRepo>();

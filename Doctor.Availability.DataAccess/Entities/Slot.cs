@@ -7,7 +7,6 @@ namespace Doctor.Availability.DataAccess.Entities
     {
         public Guid DoctorId { get; set; }
         public Doctor Doctor { get; set; }
-        public short StatusId { get; set; }
         public bool IsReserved { get; set; }
         public double Cost { get; set; }
         public DateTimeOffset Time { get; set; }

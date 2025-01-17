@@ -1,5 +1,4 @@
-﻿
-namespace Appointment.Booking.Domain.Models
+﻿namespace Appointment.Booking.Domain.Models
 {
     public class Patient
     {

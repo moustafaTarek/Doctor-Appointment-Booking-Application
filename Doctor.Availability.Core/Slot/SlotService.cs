@@ -1,5 +1,4 @@
 ﻿using Doctor.Availability.DataAccess.Repositories;
-using Enums;
 using Integration.DTOs;
 using System.Globalization;
 using SlotEntity = Doctor.Availability.DataAccess.Entities.Slot;
@@ -21,27 +20,14 @@ namespace Doctor.Availability.Core.Slot
             return await _slotRepository.GetAll(f => f.DoctorId == doctorId);
         }
 
-        public async Task<IList<SlotEntity>> GetAllSlotsForDoctorId(Guid doctorId, short slotStatusId)
-        {
-            return await _slotRepository.GetAll(f => f.DoctorId == doctorId && f.StatusId == slotStatusId);
-        }
-
         public async Task<IList<SlotEntity>> GetAllUnReservedSlotsForDoctorId(Guid doctorId)
         {
-            return await _slotRepository.GetAll(f => f.DoctorId == doctorId && f.IsReserved == false);
+            return await _slotRepository.GetAll(f => f.DoctorId == doctorId && !f.IsReserved);
         }
 
         public async Task<SlotEntity> GetIfExists(Guid slotId)
         {
            return await _slotRepository.GetById(slotId) ?? throw new ArgumentNullException($"No slots found with Id: {slotId}");
-        }
-
-        public async Task CheckIfSlotAlreadyExistsForDoctor(Guid doctorId, DateTimeOffset dateTimeOffset)
-        {
-            var isExists = await _slotRepository.IsExists(e => e.DoctorId == doctorId && e.Time.Day == dateTimeOffset.Day && e.Time.Hour == dateTimeOffset.Hour);
-
-            if (isExists)
-                throw new ArgumentNullException($"Already slot exists in the same hour");
         }
 
         public async Task AddNewSlotForDoctor(Guid doctorId, SlotAddRequest slotAddRequest)
@@ -55,7 +41,6 @@ namespace Doctor.Availability.Core.Slot
                     {
                         DoctorId = doctorId,
                         CreationDate = DateTimeOffset.UtcNow,
-                        StatusId = (short)StatusEnum.Pending,
                         Cost = slotAddRequest.Cost,
                         IsReserved = false,
                         Time = dateTimeOffset.UtcDateTime
@@ -65,12 +50,10 @@ namespace Doctor.Availability.Core.Slot
                     await _slotRepository.SaveChangesAsync();
                 }
             }
-
             catch (Exception e)
             {
                 throw new ArgumentNullException($"Error while adding slot for doctor: {e.Message}");
             }
-
         }
 
         public async Task UpdateSlot(SlotEntity slot)

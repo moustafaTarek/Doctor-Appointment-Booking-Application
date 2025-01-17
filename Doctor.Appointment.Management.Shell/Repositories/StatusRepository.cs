@@ -11,7 +11,7 @@ namespace Doctor.Appointment.Management.Shell.Repositories
     {        
         private readonly DbSet<StatusDbEntity> _statuses;
 
-        public StatusRepository(AppointmentManagemnetDbContext appointmentManagemnetDbContext)
+        public StatusRepository(AppointmentManagementDbContext appointmentManagemnetDbContext)
         {
             _statuses = appointmentManagemnetDbContext.Statuses;
         }

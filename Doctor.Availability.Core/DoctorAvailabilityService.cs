@@ -34,24 +34,6 @@ namespace Doctor.Availability.Core
             }).ToList();
         }
 
-        public async Task<IList<SlotGetResponse>> GetAllSlotsForDoctor(Guid doctorId, short statusId)
-        {
-            await _doctorService.CheckIfNotExists(doctorId);
-
-            var slots = await _slotService.GetAllSlotsForDoctorId(doctorId, statusId);
-
-            return slots.Select(e => new SlotGetResponse
-            {
-                SlotId = e.Id,
-                Cost = e.Cost,
-                Time = e.Time,
-                DoctorId = e.DoctorId,
-                DoctorName = e.Doctor.Name,
-                IsReserved = e.IsReserved
-
-            }).ToList();
-        }
-
         public async Task<IList<SlotGetResponse>> GetAllUnreservedSlotsForDoctor(Guid doctorId)
         {
             await _doctorService.CheckIfNotExists(doctorId);

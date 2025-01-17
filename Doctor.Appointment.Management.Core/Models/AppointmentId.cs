@@ -6,7 +6,7 @@
 
         public AppointmentId(Guid appointemnetId)
         {
-            if( appointemnetId == null || appointemnetId == Guid.Empty)
+            if(appointemnetId == Guid.Empty)
                 throw new ArgumentNullException(nameof(appointemnetId));
 
             Id = appointemnetId;

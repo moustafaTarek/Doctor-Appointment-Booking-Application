@@ -14,7 +14,7 @@ namespace Doctor.Appointment.Management.Shell
             return
                 services.AddScoped<IAppointmentStatusRepository, AppointmentStatusRepository>()
                         .AddScoped<IStatusRepository, StatusRepository>()     
-                        .AddDbContext<AppointmentManagemnetDbContext>(options =>
+                        .AddDbContext<AppointmentManagementDbContext>(options =>
                         {
                             options.UseNpgsql("host=localhost;port=5432;database=modular-monolith-AppDoctorManagment;user Id=postgres;password=postgres;");
                         })

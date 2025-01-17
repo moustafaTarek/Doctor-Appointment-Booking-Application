@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Appointment.Booking.Application\Appointment.Booking.Application.csproj" />
     <ProjectReference Include="..\Appointment.Booking.Infrastructure\Appointment.Booking.Infrastructure.csproj" />
     <ProjectReference Include="..\Doctor.Appointment.Management.Shell\Doctor.Appointment.Management.Shell.csproj" />
+    <ProjectReference Include="..\Doctor.Availability.Core\Doctor.Availability.Core.csproj" />
   </ItemGroup>
 
 </Project>

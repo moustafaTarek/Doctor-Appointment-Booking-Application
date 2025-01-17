@@ -1,7 +1,7 @@
 ﻿
 using Appointment.Booking.Application.Appointment.Commands;
-using Appointment.Booking.Application.Appointment.Queries;
 using Appointment.Booking.Application.Appointment.Queries.CheckIfAppointmentExistsUseCase;
+using Appointment.Booking.Application.Appointment.Queries.GetDoctorAvailableSlotsUseCase;
 using Appointment.Booking.Application.Appointment.Queries.GetNextAppointmentsForDoctorUseCase;
 using Microsoft.Extensions.DependencyInjection;
 

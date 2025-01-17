@@ -1,5 +1,4 @@
-﻿
-using Appointment.Booking.Domain.Exceptions;
+﻿using Appointment.Booking.Domain.Exceptions;
 using Appointment.Booking.Domain.IRepositories;
 using Integration.Events;
 using Integration.Interfaces;

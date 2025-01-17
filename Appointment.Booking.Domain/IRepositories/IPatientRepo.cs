@@ -1,5 +1,4 @@
-﻿
-namespace Appointment.Booking.Domain.IRepositories
+﻿namespace Appointment.Booking.Domain.IRepositories
 {
     public interface IPatientRepo
     {

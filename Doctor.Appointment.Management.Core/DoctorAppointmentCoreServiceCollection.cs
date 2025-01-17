@@ -9,7 +9,7 @@ namespace Doctor.Appointment.Management.Core
         public static IServiceCollection AddDoctorAppointmentServiceCoreCollection(this IServiceCollection services)
         {
             return
-                services.AddScoped<IAppointmentManagmentAPI, AppointmentManagmentService>();
+                services.AddScoped<IAppointmentManagmentAPI, AppointmentManagementService>();
         }
     }
 }

@@ -1,6 +1,5 @@
 using Doctor.Availability.Core;
 using Doctor.Appointment.Management.Shell;
-using Appointment.Booking.Application;
 using Appointment.Booking.Infrastructure;
 
 namespace Doctor.Appointment.System.API
@@ -20,7 +19,7 @@ namespace Doctor.Appointment.System.API
 
             builder.Services.AddDoctorAvailabilityServiceCollection()
                             .AddDoctorAppointmentServiceCollection()
-                            .AddInfrastructureServices();
+                            .AddAppointmentBookingInfrastructureServices();
 
             var app = builder.Build();
 

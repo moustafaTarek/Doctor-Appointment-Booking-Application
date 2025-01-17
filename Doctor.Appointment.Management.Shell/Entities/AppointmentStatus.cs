@@ -7,7 +7,7 @@ namespace Doctor.Appointment.Management.Shell.Entities
         public short StatusId { get; set; }
         public Status Status { get; set; }
 
-        public Guid AppontmentId { get; set; }
+        public Guid AppointmentId { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
     }
 }

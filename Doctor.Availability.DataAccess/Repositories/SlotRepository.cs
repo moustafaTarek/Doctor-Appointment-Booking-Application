@@ -1,7 +1,7 @@
 ﻿using Doctor.Availability.DataAccess.Db;
 using Doctor.Availability.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Doctor.Availability.DataAccess.Repositories
 {

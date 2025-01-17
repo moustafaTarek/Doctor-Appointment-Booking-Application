@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Doctor.Appointment.Management.Shell.Migrations
 {
-    [DbContext(typeof(AppointmentManagemnetDbContext))]
+    [DbContext(typeof(AppointmentManagementDbContext))]
     partial class AppointmentManagemnetDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace Doctor.Appointment.Management.Shell.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AppontmentId")
+                    b.Property<Guid>("AppointmentId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("CreatedAt")

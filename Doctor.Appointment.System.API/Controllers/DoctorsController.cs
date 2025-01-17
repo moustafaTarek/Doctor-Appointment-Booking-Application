@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Appointment.Booking.Application.Appointment.Queries;
 using Integration.Interfaces;
 using Integration.DTOs;
+using Appointment.Booking.Application.Appointment.Queries.GetDoctorAvailableSlotsUseCase;
+using MediatR;
+using Integration.Events;
 
 namespace Doctor.Appointment.System.API.Controllers
 {
@@ -10,18 +12,18 @@ namespace Doctor.Appointment.System.API.Controllers
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorAvailabilityAPI _doctorAvailabilityService;
-        private readonly GetDoctorAvailableSlotsHandler _getDoctorAvailableSlotsHandler;
+        private readonly IMediator _mediator;
 
-        public DoctorsController(IDoctorAvailabilityAPI doctorAvailabilityService, GetDoctorAvailableSlotsHandler getDoctorAvailableSlotsHandler)
+        public DoctorsController(IDoctorAvailabilityAPI doctorAvailabilityService, IMediator mediator)
         {
             _doctorAvailabilityService = doctorAvailabilityService;
-            _getDoctorAvailableSlotsHandler = getDoctorAvailableSlotsHandler;
+            _mediator = mediator;
         }
 
         [HttpGet("{doctorId}/AvailableSlots")]
         public async Task<IActionResult> GetAvailableSlots(Guid doctorId)
         {
-            var docAvailableSlotsGetResponse = await _getDoctorAvailableSlotsHandler.Handle(new DoctorAvailableSlotsRequest { DoctorId = doctorId });
+            var docAvailableSlotsGetResponse = await _mediator.Send(new DoctorAvailableSlotsQueryEvent { DoctorId = doctorId });
 
             return Ok(docAvailableSlotsGetResponse);
         }

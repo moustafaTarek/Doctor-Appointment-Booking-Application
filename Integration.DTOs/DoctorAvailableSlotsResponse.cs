@@ -1,8 +1,6 @@
-﻿using Integration.DTOs;
-
-namespace Appointment.Booking.Application.Appointment.Queries
+﻿namespace Integration.DTOs
 {
-    public  class DoctorAvailableSlotsResponse
+    public class DoctorAvailableSlotsResponse
     {
         public string DoctorName { get; }
         public Guid? DoctorId { get; }
@@ -14,11 +12,11 @@ namespace Appointment.Booking.Application.Appointment.Queries
             DoctorId = slots.FirstOrDefault()?.DoctorId == null ? Guid.Empty : slots.FirstOrDefault()?.DoctorId;
 
             AvailableSlots = slots.Select(e => new AvailableSlots
-                             {
-                                 SlotId = e.SlotId,
-                                 SlotTime = e.Time,
-                                 Cost = e.Cost
-                             }).ToList();
+            {
+                SlotId = e.SlotId,
+                SlotTime = e.Time,
+                Cost = e.Cost
+            }).ToList();
         }
     }
 
@@ -26,6 +24,6 @@ namespace Appointment.Booking.Application.Appointment.Queries
     {
         public Guid SlotId { get; set; }
         public DateTimeOffset SlotTime { get; set; }
-        public Double Cost { get; set; }
+        public double Cost { get; set; }
     }
 }

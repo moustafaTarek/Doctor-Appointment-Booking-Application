@@ -17,19 +17,23 @@ namespace Appointment.Booking.Infrastructure.Repositories
             _appointments = context.appointments;
         }
 
-        public async Task<int> AddAppointment(Domain.Models.Appointment appointment)
+        public async Task<Guid> AddAppointment(Domain.Models.Appointment appointment)
         {
-            _appointments.Add(new AppointmentEntity
+            var newApp = new AppointmentEntity
             {
                 Id = appointment.Id,
                 PatientId = appointment.PatientId,
                 DoctorId = appointment.DoctorId,
                 SlotId = appointment.SlotId,
                 ReservedAt = appointment.ReservedAt,
-                StatusId = (short)appointment.Status 
-            });
+                StatusId = (short)appointment.Status
+            };
             
-            return await _context.SaveChangesAsync();
+            _appointments.Add(newApp);
+            
+            await _context.SaveChangesAsync();
+
+            return newApp.Id;
         }
 
         public async Task<bool> AppointmentExists(Guid appointmentId)

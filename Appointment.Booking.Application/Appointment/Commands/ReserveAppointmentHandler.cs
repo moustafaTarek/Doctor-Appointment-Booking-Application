@@ -12,19 +12,22 @@ namespace Appointment.Booking.Application.Appointment.Commands
     {
         private readonly IDoctorAvailabilityAPI _doctorAvailabilityService;
         private readonly IAppointmentRepo _appointmentRepo;
+        private readonly IMediator _mediator;
 
         private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> _slotLocks = new ConcurrentDictionary<Guid, SemaphoreSlim>();
 
-        public ReserveAppointmentHandler(IDoctorAvailabilityAPI doctorAvailabilityService, IAppointmentRepo appointmentRepo)
+        public ReserveAppointmentHandler(IDoctorAvailabilityAPI doctorAvailabilityService, IAppointmentRepo appointmentRepo, IMediator mediator)
         {
             _doctorAvailabilityService = doctorAvailabilityService;
             _appointmentRepo = appointmentRepo;
+            _mediator = mediator;
         }
 
         public async Task<string> Handle(AppointmentReservationCommandEvent request, CancellationToken cancellationToken)
         {
             var slotLock = _slotLocks.GetOrAdd(request.SlotId, _ => new SemaphoreSlim(1, 1));
             await slotLock.WaitAsync();
+            
             try
             {
                 var slot = await _doctorAvailabilityService.GetSlot(request.SlotId) ?? throw new ArgumentNullException($"No slots has been found for Id: {request.SlotId}", "Slot");
@@ -34,10 +37,13 @@ namespace Appointment.Booking.Application.Appointment.Commands
 
                 if (!slot.DoctorId.Equals(request.DoctorId))
                     throw new InvalidReservationException($"Slot does not belong to the doctor with Id: {slot.DoctorId}");
+                
                 var appointment = AppointmentModel.Create(request.DoctorId, request.PatientId, request.SlotId);
                 await _doctorAvailabilityService.UpdateSlotAsReserved(slot.SlotId);
 
-                await _appointmentRepo.AddAppointment(appointment);
+                var appoId = await _appointmentRepo.AddAppointment(appointment);
+
+                await _mediator.Send(new AppoitmentConfirmationQueryEvent {AppointmentId = appoId });
 
                 return $"Appointment has been reserved successfully with Id: {appointment.Id}";
             }

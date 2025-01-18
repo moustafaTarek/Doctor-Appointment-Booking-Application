@@ -41,13 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{F641AFCC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enums", "Enums\Enums.csproj", "{5A7BF2BE-395C-45E2-AC10-3593AE221064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration.Events", "IntegrationEvents\Integration.Events.csproj", "{D66444A8-EB09-4BC5-BEFC-5F2D4EB82E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration.Events", "IntegrationEvents\Integration.Events.csproj", "{D66444A8-EB09-4BC5-BEFC-5F2D4EB82E2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctor.Appointment.System.API", "Doctor.Appointment.System.API\Doctor.Appointment.System.API.csproj", "{5D413EAC-6474-477E-AC9B-DC099D6FEA72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor.Appointment.System.API", "Doctor.Appointment.System.API\Doctor.Appointment.System.API.csproj", "{5D413EAC-6474-477E-AC9B-DC099D6FEA72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration.Interfaces", "IntegrationInterfaces\Integration.Interfaces.csproj", "{96D6BCFB-72F7-4AF0-982D-BB6FE496CB8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration.Interfaces", "IntegrationInterfaces\Integration.Interfaces.csproj", "{96D6BCFB-72F7-4AF0-982D-BB6FE496CB8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration.DTOs", "Integration.DTOs\Integration.DTOs.csproj", "{C795D14B-4383-48B7-A282-607F3C20B11E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration.DTOs", "Integration.DTOs\Integration.DTOs.csproj", "{C795D14B-4383-48B7-A282-607F3C20B11E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Confirmation.Core", "Appointment.Confirmation.Core\Appointment.Confirmation.Core.csproj", "{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{C795D14B-4383-48B7-A282-607F3C20B11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C795D14B-4383-48B7-A282-607F3C20B11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C795D14B-4383-48B7-A282-607F3C20B11E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{5D413EAC-6474-477E-AC9B-DC099D6FEA72} = {3FD64579-534B-4C90-A96F-F3A3B2912A16}
 		{96D6BCFB-72F7-4AF0-982D-BB6FE496CB8E} = {300A428B-AAD8-4C4A-A7FB-7B5FAA7BE4BC}
 		{C795D14B-4383-48B7-A282-607F3C20B11E} = {300A428B-AAD8-4C4A-A7FB-7B5FAA7BE4BC}
+		{1DBCCB2D-4289-4DC1-8DC4-07A7A60AEEFD} = {4559B44D-085D-4765-95F2-F4E7FEB280D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75D04F69-1312-4D48-8987-BF28F395C788}

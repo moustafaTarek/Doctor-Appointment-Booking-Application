@@ -1,7 +1,7 @@
 using Doctor.Availability.Core;
 using Doctor.Appointment.Management.Shell;
 using Appointment.Booking.Infrastructure;
-
+using Appointment.Confirmation.Core;
 namespace Doctor.Appointment.System.API
 {
     public class Program
@@ -19,7 +19,8 @@ namespace Doctor.Appointment.System.API
 
             builder.Services.AddDoctorAvailabilityServiceCollection()
                             .AddDoctorAppointmentServiceCollection()
-                            .AddAppointmentBookingInfrastructureServices();
+                            .AddAppointmentBookingInfrastructureServices()
+                            .AddAppointmentConfirmationCore();
 
             var app = builder.Build();
 
